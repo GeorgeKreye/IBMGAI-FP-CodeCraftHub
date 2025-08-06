@@ -35,11 +35,15 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
+}, {
+  timestamps: true // Automatically manage createdAt and updatedAt
 });
 
 // Hash password before saving user
 userSchema.pre('save', async function (next) {
+  // Only hash the password if it has been modified (or is new)
   if (!this.isModified('password')) return next();
+
   try {
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
@@ -49,7 +53,11 @@ userSchema.pre('save', async function (next) {
   }
 });
 
-// Method to compare password
+/**
+ * Compare candidate password with stored hashed password
+ * @param {string} candidatePassword - Password to compare
+ * @returns {Promise<boolean>} - True if passwords match
+ */
 userSchema.methods.comparePassword = async function (candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);
 };
