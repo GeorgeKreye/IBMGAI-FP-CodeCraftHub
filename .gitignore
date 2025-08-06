@@ -65,12 +65,10 @@ web_modules/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variable files;
-# commented out to avoid having to recreate the file
-# each init, but do modify on setup to be correct
-# .env
-# .env.*
-# !.env.example
+# dotenv environment variable files
+.env
+.env.*
+!.env.example
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
