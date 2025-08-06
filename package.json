@@ -1,0 +1,14 @@
+{
+  "name": "user-management-service",
+  "version": "1.0.0",
+  "description": "Used ChatGPT 4.1 mini as assistant",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
